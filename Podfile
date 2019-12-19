@@ -8,6 +8,5 @@ target 'McKinleyTest' do
   # Pods for McKinleyTest
 
 pod 'Alamofire', '4.8.2'
-  pod 'ObjectMapper' ,'3.4.2'
   
 end
