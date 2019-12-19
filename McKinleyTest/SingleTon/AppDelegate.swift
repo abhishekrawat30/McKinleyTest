@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if UserDefaults().string(forKey: "token") != nil{
+        //cehck if token is present or not to open the webview directly 
+        if UserDefaults.standard.string(forKey: "token") != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: WebViewController.storyboardID)
             vc.modalTransitionStyle = .crossDissolve

@@ -7,24 +7,30 @@
 //
 
 import UIKit
+import WebKit
 
-class WebViewController: UIViewController {
-
+class WebViewController: UIViewController, WKNavigationDelegate {
+    
+    static let storyboardID = "myWebView"
+    var webView: WKWebView!
+    var urlToLoad: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        webView.scrollView.bounces = false
+        view = webView
+        loadWebView()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //loading webview
+    func loadWebView(){
+        let token = UserDefaults.standard.string(forKey: "token")
+        let url = URL(string: "https://www.hackingwithswift.com?token=\(token!)")!
+        webView.load(URLRequest(url: url))
+        webView.allowsBackForwardNavigationGestures = true
     }
-    */
-
+    
 }
